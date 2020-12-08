@@ -46,7 +46,10 @@ def intersection(llist_1, llist_2):
     for y in llist_2.arr:
         if y.value in array:
             toReturn.add(y.value)
-    return toReturn
+    newLinked = LinkedList()
+    for value in toReturn:
+        newLinked.append(value)
+    return newLinked
 
 
 def union(llist_1, llist_2):
@@ -57,7 +60,10 @@ def union(llist_1, llist_2):
     for x in llist_2.arr:
         if x.value not in array:
             array.add(x.value)
-    return array
+    newLinked = LinkedList()
+    for value in array:
+        newLinked.append(value)
+    return newLinked
 
 # Test case 1
 

@@ -14,31 +14,17 @@ class Group(object):
         return self.users
     def get_name(self):
         return self.name
-    def get_child(self):
-        if len(self.groups) != 0:
-            return self.groups[self.index]
-        else:
-            return None
     def get_child_index(self):
         if len(self.groups) != 0:
-            return self.groups[self.index]
+            if self.index < len(self.groups) - 1 or self.index == len(self.groups) - 1:
+                return self.groups[self.index]
+            else:
+                return "Falsify"
         else:
             return None
     def increment_index(self):
         self.index += 1
-    #index, increment, get child via index
 
-parent = Group("parent")
-child = Group("child")
-sub_child = Group("subchild")
-sub_child_two = Group("subchildTwo")
-sub_child_user = "sub_child_user"
-sub_child.add_user(sub_child_user)
-child.add_group(sub_child)
-child.add_group(sub_child_two)
-new_user = "new_user"
-sub_child_two.add_user(new_user)
-parent.add_group(child)
 
 class Stack:
     def __init__(self, initial_size=3):
@@ -60,7 +46,6 @@ class Stack:
 class State(object):
     def __init__(self):
         self.visited = []
-        #list visited groups, set and get visited
     def set(self, value):
         self.visited.append(value)
     def pop(self):
@@ -72,12 +57,12 @@ def is_user(user, group):
     state = State()
     stack.push(group)
     while group:
+        if group.get_child_index() == "Falsify":
+            return False
         if group not in state.visited:
-            print(group.name)
             if user in group.get_users():
-                print( True )
-            state.set(group)
-        if group.get_child_index() != None:
+                return True
+        if group.get_child_index() is not None:
             group = group.get_child_index()
             stack.push(group)
         else:
@@ -86,30 +71,26 @@ def is_user(user, group):
             group.increment_index()
 
 
+"""
+parent = Group("parent")
+child = Group("child")
+sub_child = Group("subchild")
+sub_child_two = Group("subchildTwo")
+sub_child_user = "sub_child_user"
+sub_child.add_user(sub_child_user)
+child.add_group(sub_child)
+child.add_group(sub_child_two)
+new_user = "new_user"
+sub_child_two.add_user(new_user)
+parent.add_group(child)
+print("User is in group:", is_user("new_user", child))
 
-
-
-            """
-            print("Before child:", group.name)
-            #Get group child
-            group = group.get_child_index(0)
-            #Check if group child visited before
-            if group not in state.visited.keys():
-                print("Not in state")
-                if group == None:
-                    print(False)
-                else:
-                    print(group.name)
-                    state.set(group)
-            else:
-                #Been visited
-                print("STATE", state)
-                group.increment_index()
-                state.pop(group)
-            """
-
-
-
-is_user("new_user", child)
-
+parent = Group("parent")
+parent.add_user("parent_user")
+child = Group("child")
+parent.add_group(child)
+sub_child = Group("subchild")
+child.add_group(sub_child)
+print("User is in group:", is_user("parent_user", child))
+"""
 

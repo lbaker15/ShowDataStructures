@@ -1,0 +1,5 @@
+I first loop throughout the directories which runs on linear time
+O(n*6) or O(n).
+I then call a recursive function which passes in the current directory
+in the loop, this also runs on linear time O(n).
+Therefore worst case scenario would be...

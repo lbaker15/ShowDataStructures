@@ -1,0 +1,3 @@
+The worst case scenario in this algorithim would be O(n) due to
+the while loop, as I have used stacks insertion and deletion is
+O(1).

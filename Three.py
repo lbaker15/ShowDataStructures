@@ -1,5 +1,4 @@
-import sys
-import heapq
+import heapq, sys
 
 class Node(object):
     def __init__(self, char=None, freq=None):
@@ -29,7 +28,6 @@ def huffman(data: str):
         for item in sort_data:
             new_node = Node(item[0], item[1])
             heapq.heappush(h, ( item[1], new_node ))
-        #10 characters
         return h
     def init_tree(h):
         while(len(h) > 1):
@@ -46,38 +44,61 @@ def huffman(data: str):
             binary_char(root.right, obj, str + "1")
             if root.char:
                 obj[root.char] = str
-    def decode(string, tree):
-        decode = ""
-        n = len(string)
-        count = 0
-        while count < n:
-            current = tree
-            while current.left is not None and current.right is not None:
-                if string[count] == "0":
-                    current = current.left
-                else:
-                    current = current.right
-                count += 1
-            decode += current.char
-            print(decode)
 
     characters = loop_char(data)
     heap = push_to_heap(characters)
     tree = init_tree(heap)
     char = {}
     binary_char(tree, char, "")
-    #print(char)
     for key, value in char.items():
-        #print(key, value)
         data = data.replace(key, value)
-    decode(data, tree)
+    return data, tree, characters
 
-huffman("This is a sentence")
+def decode(string, tree):
+    decode = ""
+    if string == None:
+        return
+    n = len(string)
+    count = 0
+    while count < n:
+        current = tree
+        while current.left is not None and current.right is not None:
+            if string[count] == "0":
+                current = current.left
+            else:
+                current = current.right
+            count += 1
+        decode += current.char
+    return decode, tree, string
 
 
+"""
+#Test One
+a_great_sentence = "This is a sentence"
+print("Content of the data is: {}\n".format(a_great_sentence))
+data = huffman(a_great_sentence)
+print("Content of the encoded data is: {}\n".format(data))
+decoded = decode(data[0], data[1])
+print("Content of the decoded data is: {}\n".format(decoded))
 
-
-
+#Test Two
+another_sent = ""
+print("Content of the data is: {}\n".format(another_sent))
+data_two = huffman(another_sent)
+print("Content of the encoded data is: {}\n".format(data_two))
+decoded_two = decode(data_two[0], data_two[1])
+print("Content of the decoded data is: {}\n".format(decoded_two))
+"""
+#Test Three
+another_sent = "OneWord"
+print("Size of string: {}\n".format(sys.getsizeof( another_sent )) )
+print("Content of the data is: {}\n".format(another_sent))
+data_two = huffman(another_sent)
+print("The size of the encoded data is: {}\n".format(sys.getsizeof( int(data_two[0], base=2) )))
+print("Content of the encoded data is: {}\n".format(data_two))
+decoded_two = decode(data_two[0], data_two[1])
+print("The size of the decoded data is: {}\n".format(sys.getsizeof( str(decoded_two[0]) )))
+print("Content of the decoded data is: {}\n".format(decoded_two))
 
 
 

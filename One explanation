@@ -1,0 +1,3 @@
+I implemented a doubly linked list, to add items I prepended to the list
+meaning this runs in O(1) time.  Getting and removing from the list
+also runs in O(1) time therefore the worst case scenario is O(1).

@@ -1,0 +1,3 @@
+Time complexity is O(n) due to both union and intersection using three loops
+within each function.  I use a set to ensure that values are unique rather than
+looping through each list to remove duplicates.

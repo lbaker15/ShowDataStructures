@@ -1,0 +1,14 @@
+I am firstly looping the characters and pushing to a dictionary
+which is O(n).
+Secondly I am using a merge sort to sort the items from the dictionary
+which is n log2 n.
+I am then looping through the sorted data and pushing to a heap, O(n).
+Thirdly I am initializing the tree which involves looping data
+O(n) and popping two items from the heap O(2 log n) and pushing back
+into the heap O(log n).
+Lastly, I am carrying out another loop to replace the original string
+with the encoded characters O(n).
+I therefore believe the worst case scenario is O(n log n).
+
+The worst case scenario of decoding I believe is On ^ 2 due to
+having a nested loop.
