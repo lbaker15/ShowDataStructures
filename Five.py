@@ -20,12 +20,14 @@ class Blockchain:
     def create_block(self, data):
         return Block(time.gmtime(), data, None, None)
     def add_block(self, hashInfo):
+        if hashInfo == "":
+            return
         if self.head is None:
-            block = self.create_block(hashInfo)
+            block = self.create_block(str(hashInfo))
             self.head = block
             self.tail = block
         else:
-            block = self.create_block(hashInfo)
+            block = self.create_block(str(hashInfo))
             block.next = self.tail
             self.tail.previous_hash = block
             self.tail = block
@@ -37,9 +39,20 @@ class Blockchain:
             block = block.next
         return s
 
-
 blockChain = Blockchain()
 blockChain.add_block("String")
+blockChain.add_block("Two")
+blockChain.add_block("Three")
+print(blockChain)
+
+blockChain = Blockchain()
+blockChain.add_block("")
+blockChain.add_block("Two")
+blockChain.add_block("Three")
+print(blockChain)
+
+blockChain = Blockchain()
+blockChain.add_block(23214)
 blockChain.add_block("Two")
 blockChain.add_block("Three")
 print(blockChain)

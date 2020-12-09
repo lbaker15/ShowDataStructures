@@ -1,14 +1,26 @@
+Explanation
+In this problem I used a heap to insert and pop data as heaps are efficient
+for these purposes.
+
+Time complexity
 I am firstly looping the characters and pushing to a dictionary
 which is O(n).
 Secondly I am using a merge sort to sort the items from the dictionary
-which is n log2 n.
-I am then looping through the sorted data and pushing to a heap, O(n).
+which is O(n log2 n).
+I am then looping through the sorted data and pushing to a heap, O(n log n),
+pushing to a heap is an O(log n) process and I am iterating through values
+to push to the heap therefore the O(n log n).
 Thirdly I am initializing the tree which involves looping data
 O(n) and popping two items from the heap O(2 log n) and pushing back
 into the heap O(log n).
-Lastly, I am carrying out another loop to replace the original string
-with the encoded characters O(n).
-I therefore believe the worst case scenario is O(n log n).
+I therefore believe the worst case scenario of encoding data
+is O(n log n).
 
-The worst case scenario of decoding I believe is On ^ 2 due to
-having a nested loop.
+The time complexity of decoding I believe is O(n) as this involves a
+single loop.
+
+Space complexity
+I believe the space complexity of encoding will be O(n log(n)), inserting
+to a dictionary has a worst case O(n) and then inserting to a heap is O(log(n))
+therefore O(n log n).
+The space complexity of decoding is also O(n) due to the loop.

@@ -25,7 +25,6 @@ class Group(object):
     def increment_index(self):
         self.index += 1
 
-
 class Stack:
     def __init__(self, initial_size=3):
         self.list = list()
@@ -50,7 +49,6 @@ class State(object):
         self.visited.append(value)
     def pop(self):
         self.visited.pop(0)
-
 
 def is_user(user, group):
     stack = Stack()
@@ -92,5 +90,21 @@ parent.add_group(child)
 sub_child = Group("subchild")
 child.add_group(sub_child)
 print("User is in group:", is_user("parent_user", child))
+
+parent = Group("parent")
+parent.add_user("parent_user")
+child = Group("child")
+parent.add_group(child)
+sub_child = Group("subchild")
+child.add_group(sub_child)
+print("User is in group:", is_user("doesnt_exist", child)) 
 """
+
+parent = Group("parent")
+parent.add_user("parent_user")
+child = Group("child")
+parent.add_group(child)
+sub_child = Group("subchild")
+child.add_group(sub_child)
+print("User is in group:", is_user("", child))
 

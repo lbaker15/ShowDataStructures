@@ -1,3 +1,6 @@
-Time complexity is O(n) due to both union and intersection using three loops
-within each function.  I use a set to ensure that values are unique rather than
-looping through each list to remove duplicates.
+Both union and intersection use three loops within each function, a
+set is used to append values therefore not allowing any
+duplicates.  The time and space complexity of both functions will be O(N)
+due to the fact that the size of the input will increase the number of times
+the loops are called.
+

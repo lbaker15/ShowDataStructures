@@ -1,3 +1,8 @@
-The worst case scenario in this algorithim would be O(n) due to
-the while loop, as I have used stacks insertion and deletion is
-O(1).
+Explanation
+In this example I use a depth-first pre-order traversal of a tree.
+The space complexity of the solution is dependent upon the number of
+edges at each level of the tree therefore O(V + E) where v is the number
+of vertices and e is the number of edges.  I picked a depth-first solution
+as it is a more space-efficient solution than a breadth-first solution.
+For time complexity the worst case scenario in this algorithim would again be
+O(V + E) where the run time linearly increases as the size of the tree increases.

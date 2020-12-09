@@ -1,4 +1,8 @@
 The adding of blocks on the blockchain is simply insertion into a
-linked list therefore the time complexity is O(1).  The string that is returned
-from the function is however O(1) due to the while loop used to loop through the
- linked list.
+linked list therefore the time complexity is O(1).  Space complexity will
+depend on the number of characters in the string as this is stored in the
+data property of each block.  Whether integers are entered
+into the value passed to the blockchain is irrelevant as the value is converted
+to a string therefore this will not affect space complexity.
+To display the linked list the list in looped, this having a space and time complexity
+of O(N).  Worst case scenario is therefore O(N).

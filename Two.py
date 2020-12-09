@@ -1,12 +1,13 @@
 import os
 
 def files(suffix, path):
+    if suffix == "" or path == "":
+        return
     directories = []
     find_files(suffix, path, directories)
     return directories
 
 def find_files(suffix, path, directories):
-    print(directories)
     for d in os.listdir(path):
         current = os.path.join(path, d)
         if os.path.isfile(current):
@@ -17,6 +18,6 @@ def find_files(suffix, path, directories):
 
 
 print(files("t1.c", "./testdir"))
-
-
+#print(files("", "./testdir"))
+#print(files("fakeFile", './testdir'))
 

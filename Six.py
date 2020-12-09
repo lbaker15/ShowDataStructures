@@ -49,6 +49,8 @@ def intersection(llist_1, llist_2):
     newLinked = LinkedList()
     for value in toReturn:
         newLinked.append(value)
+    if len(toReturn) == 0:
+        return None
     return newLinked
 
 
@@ -63,10 +65,12 @@ def union(llist_1, llist_2):
     newLinked = LinkedList()
     for value in array:
         newLinked.append(value)
+    if len(array) == 0:
+        return None
     return newLinked
 
 # Test case 1
-
+"""
 linked_list_1 = LinkedList()
 linked_list_2 = LinkedList()
 
@@ -78,11 +82,9 @@ for i in element_2:
 
 print (union(linked_list_1,linked_list_2))
 print (intersection(linked_list_1,linked_list_2))
-
-
-
-
 """
+
+
 # Test case 2
 
 linked_list_3 = LinkedList()
@@ -99,4 +101,3 @@ for i in element_2:
 
 print (union(linked_list_3,linked_list_4))
 print (intersection(linked_list_3,linked_list_4))
-"""
